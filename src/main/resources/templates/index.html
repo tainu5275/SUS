@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset = "ISO-8859-1" />
+    <link href = "css/styles.css" rel = "stylesheet"/>
+    <title>System Usability Scale</title>
+</head>
+<body>
+<h4>Please take a survey</h4>
+
+<form action="#" th:action = "@{sus/compute/} + ${sessionID}" th:object="${scores}" method="post" enctype="application/json" >
+    <fieldset>
+
+        <table >
+            <tr th:each="item : ${questions}">
+                <td>
+                    <div>
+                        <div>
+                            <label th:text="${item}">example</label>
+                            <input type="radio" id="sd+${itemStat.index}" th:name="${'scores[' + itemStat.index + ']'}" value=1 />
+                            <label for="sd+${itemStat.index}">Strongly Disagree</label>
+                            <input type="radio" id="d+${itemStat.index}" th:name="${'scores[' + itemStat.index + ']'}" value=2 />
+                            <label for="sd+${itemStat.index}">Disagree</label>
+                            <input type="radio" id="n+${itemStat.index}" th:name="${'scores[' + itemStat.index + ']'}" value=3 />
+                            <label for="sd+${itemStat.index}">Neither</label>
+                            <input type="radio" id="a+${itemStat.index}" th:name="${'scores[' + itemStat.index + ']'}" value=4 />
+                            <label for="sd+${itemStat.index}">Agree</label>
+                            <input type="radio" id="sa+${itemStat.index}" th:name="${'scores[' + itemStat.index + ']'}" value=5 />
+                            <label for="sd+${itemStat.index}">Strongly Agree</label>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="submit"
+                            class="button"
+                            name="save" >Calculate!</button>
+                </td>
+                <td></td>
+            </tr>
+        </table>
+    </fieldset>
+</form>
+
+<br>
+
+
+
+
+
+</body>
+</html>
+
+<!--<p>1. I think that I would like to use this system frequently.</p>
+<input type="radio" id="sd-1" name="scale" value="sd">
+<label for="sd-1">Strongly Disagree</label>
+<input type="radio" id="d-1" name="scale" value="d">
+<label for="d-1">Disagree</label>
+<input type="radio" id="n-1" name="scale" value="n">
+<label for="n-1">Neither</label>
+<input type="radio" id="a-1" name="scale" value="a">
+<label for="a-1">Agree</label>
+<input type="radio" id="sa-1" name="scale" value="sa">
+<label for="sa-1">Strongly Agree</label>
+<br>
+<p>2. I found the system unnecessarily complex.</p>
+<input type="radio" id="sd-2" name="scale" value="sd">
+<label for="sd-2">Strongly Disagree</label>
+<input type="radio" id="d-2" name="scale" value="d">
+<label for="d-2">Disagree</label>
+<input type="radio" id="n-2" name="scale" value="n">
+<label for="n-2">Neither</label>
+<input type="radio" id="a-2" name="scale" value="a">
+<label for="a-2">Agree</label>
+<input type="radio" id="sa-2" name="scale" value="sa">
+<label for="sa-2">Strongly Agree</label>
+<br>
+<p>3. I thought the system was easy to use.</p>
+<input type="radio" id="sd-3" name="scale" value="sd">
+<label for="sd-3">Strongly Disagree</label>
+<input type="radio" id="d-3" name="scale" value="d">
+<label for="d-3">Disagree</label>
+<input type="radio" id="n-3" name="scale" value="n">
+<label for="n-3">Neither</label>
+<input type="radio" id="a-3" name="scale" value="a">
+<label for="a-3">Agree</label>
+<input type="radio" id="sa-3" name="scale" value="sa">
+<label for="sa-3">Strongly Agree</label>
+<br>
+<p>4. I think that I would need the support of a technical person to be able to use this system.</p>
+<input type="radio" id="sd-4" name="scale" value="sd">
+<label for="sd-4">Strongly Disagree</label>
+<input type="radio" id="d-4" name="scale" value="d">
+<label for="d-4">Disagree</label>
+<input type="radio" id="n-4" name="scale" value="n">
+<label for="n-4">Neither</label>
+<input type="radio" id="a-4" name="scale" value="a">
+<label for="a-4">Agree</label>
+<input type="radio" id="sa-4" name="scale" value="sa">
+<label for="sa-4">Strongly Agree</label>
+<br>
+<p>5. I found the various functions in this system were well integrated.</p>
+<input type="radio" id="sd-5" name="scale" value="sd">
+<label for="sd-5">Strongly Disagree</label>
+<input type="radio" id="d-5" name="scale" value="d">
+<label for="d-5">Disagree</label>
+<input type="radio" id="n-5" name="scale" value="n">
+<label for="n-5">Neither</label>
+<input type="radio" id="a-5" name="scale" value="a">
+<label for="a-5">Agree</label>
+<input type="radio" id="sa-5" name="scale" value="sa">
+<label for="sa-5">Strongly Agree</label>
+<br>
+<p>6. I thought there was too much inconsistency in this system.</p>
+<input type="radio" id="sd-6" name="scale" value="sd">
+<label for="sd-6">Strongly Disagree</label>
+<input type="radio" id="d-6" name="scale" value="d">
+<label for="d-6">Disagree</label>
+<input type="radio" id="n-6" name="scale" value="n">
+<label for="n-6">Neither</label>
+<input type="radio" id="a-6" name="scale" value="a">
+<label for="a-6">Agree</label>
+<input type="radio" id="sa-6" name="scale" value="sa">
+<label for="sa-6">Strongly Agree</label>
+<br>
+<p>7. I would imagine that most people would learn to use this system very quickly.</p>
+<input type="radio" id="sd-7" name="scale" value="sd">
+<label for="sd-7">Strongly Disagree</label>
+<input type="radio" id="d-7" name="scale" value="d">
+<label for="d-7">Disagree</label>
+<input type="radio" id="n-7" name="scale" value="n">
+<label for="n-7">Neither</label>
+<input type="radio" id="a-7" name="scale" value="a">
+<label for="a-7">Agree</label>
+<input type="radio" id="sa-7" name="scale" value="sa">
+<label for="sa-7">Strongly Agree</label>
+<br>
+<p>8. I found the system very cumbersome to use.</p>
+<input type="radio" id="sd-8" name="scale" value="sd">
+<label for="sd-8">Strongly Disagree</label>
+<input type="radio" id="d-8" name="scale" value="d">
+<label for="d-8">Disagree</label>
+<input type="radio" id="n-8" name="scale" value="n">
+<label for="n-8">Neither</label>
+<input type="radio" id="a-8" name="scale" value="a">
+<label for="a-8">Agree</label>
+<input type="radio" id="sa-8" name="scale" value="sa">
+<label for="sa-8">Strongly Agree</label>
+<br>
+<p>9. I felt very confident using the system.</p>
+<input type="radio" id="sd-9" name="scale" value="sd">
+<label for="sd-9">Strongly Disagree</label>
+<input type="radio" id="d-9" name="scale" value="d">
+<label for="d-9">Disagree</label>
+<input type="radio" id="n-9" name="scale" value="n">
+<label for="n-9">Neither</label>
+<input type="radio" id="a-9" name="scale" value="a">
+<label for="a-9">Agree</label>
+<input type="radio" id="sa-9" name="scale" value="sa">
+<label for="sa-9">Strongly Agree</label>
+<br>
+<p>10. I needed to learn a lot of things before I could get going with this system.</p>
+<input type="radio" id="sd-10" name="scale" value="sd">
+<label for="sd-10">Strongly Disagree</label>
+<input type="radio" id="d-10" name="scale" value="d">
+<label for="d-10">Disagree</label>
+<input type="radio" id="n-10" name="scale" value="n">
+<label for="n-10">Neither</label>
+<input type="radio" id="a-10" name="scale" value="a">
+<label for="a-10">Agree</label>
+<input type="radio" id="sa-10" name="scale" value="sa">
+<label for="sa-10">Strongly Agree</label>
+<br>-->

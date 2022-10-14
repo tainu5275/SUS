@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset = "ISO-8859-1" />
+    <link href = "css/styles.css" rel = "stylesheet"/>
+    <title>System Usability Scale</title>
+</head>
+<body>
+<h4>Score Details Page</h4>
+
+
+<form action="#"  method="get" >
+    <p class="content">Global score is: <span th:text="${scores.score}"></span> from <span th:text="${scores.entries}"></span> entries </p>
+</form>
+
+
+<form action="#" th:action = "@{../getScore/} + ${sessionID}"  method="get" >
+    <button type="submit"
+            class="button">View My Score</button>
+</form>
+
+</body>
+</html>
