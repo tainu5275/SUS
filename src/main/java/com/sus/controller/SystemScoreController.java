@@ -28,6 +28,7 @@ public class SystemScoreController {
     public String computeSessionScore(@PathVariable("sessionID") String sessionID,
                                       @ModelAttribute(value = "scores") ComputeSystemScoreRequest computeSystemScoreRequest,
                                       Model modelMap){
+        
         if(null == sessionID || sessionID.isBlank()) {
             LOG.error("Invalid session ID");
             throw  new SystemScoreCustomExceptions.CalculateScoreException(
